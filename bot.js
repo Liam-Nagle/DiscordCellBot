@@ -113,7 +113,10 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 				
 				if(user == Thorgrim102) {
 					valueThor = valueThor + value;
-					currentvalue = valueThor;
+					bot.sendMessage({
+						to: channelID,
+						message: user + " has added \n" + value + " Value \n" + user + " total value is now: " + valueThor
+					});
 					console.log(currentvalue);
 					console.log(valueThor);
 				} else if (user == "weinerdog102") {
@@ -133,11 +136,6 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 					console.log(valueSiamese);
 				}
 				
-				
-				bot.sendMessage({
-					to: channelID,
-					message: user + " has added \n" + value + " Value \n" + user + " total value is now: " + currentvalue
-				});
 			break;
             // Just add any case commands if you want to..
          }
