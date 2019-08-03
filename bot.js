@@ -1,6 +1,8 @@
 var Discord = require('discord.io');
 var logger = require('winston');
 var auth = require('./auth.json');
+var fs = require('fs');
+
 
 const prefix = "!" //set bot prefix
 
@@ -17,7 +19,13 @@ let time;
 let timeH;
 let timeM;
 let timeS;
-let value;
+let value
+let valueThor;
+let valueWeiner;
+let valueVapor;
+let valueSiamese;
+var data = fs.readFileSync('users.json')
+var users = JSON.parse(data);
 
 function updateTime(){
 	
@@ -39,6 +47,15 @@ function updateTime(){
 	timeS = curSeconds;
 }
 setInterval(updateTime, 1000);
+
+
+
+function addUser(username, value) {
+	var username = this.user;
+	var value = Number(this.value);
+	users[username] = value;
+}
+
 
 // Configure logger settings
 logger.remove(logger.transports.Console);
@@ -88,10 +105,30 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 			break;
 			// !addvalue
 			case 'addvalue':
-				//value = parseInt(command[1]);
+				value = parseInt(command[1]);
+				let currentvalue;
+				//addUser(user, value);
+				
+				//WOULD BE NICE THIS WAY BUT JUST CHECK IF USER = NAME AND THEN MAKE SURE ITS ONLY THE 4 PEOPLE THAT ARE IN THE CELL. SIAMESE ME WEINER ND VAPOR.
+				
+				if(user == "Thorgrim102") {
+					valueThor = valueThor + value;
+					currentvalue = valueThor;
+				} else if (user == "weinerdog102") {
+					valueWeiner = valueWeiner + value;
+					currentvalue = valueWeiner;
+				} else if (user == "Vaporizr243") {
+					valueVapor = valueVapor + value;
+					currentvalue = valueVapor;
+				} else if (user == "MySiameseTwin") {
+					valueSiamese = valueSiamese + value;
+					currentvalue = valueSiamese;
+				}
+				
+				
 				bot.sendMessage({
 					to: channelID,
-					message: user + " has added \n" + value + "\n" + user + " total value is now: "
+					message: user + " has added \n" + value + "\n" + user + " total value is now: " + currentvalue
 				});
 			break;
             // Just add any case commands if you want to..
