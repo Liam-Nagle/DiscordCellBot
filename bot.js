@@ -51,10 +51,13 @@ setInterval(updateTime, 1000);
 
 
 function addUser(username, value) {
-	var username = this.user;
-	var value = Number(this.value);
-	users[username] = value;
+	
 }
+
+function addValue(username, value) {
+	var data = 
+}
+
 
 
 // Configure logger settings
@@ -80,7 +83,21 @@ bot.on('message', function (user, userID, channelID, message, evt) {
     if (message.startsWith(prefix)) { // Message starts with prefix
         let command = message.slice(prefix.length).split(" "); // Split message into words
         switch (command[0]) { // Execute code depending on first word
-            // !clockin
+            // !help
+            case 'help':
+			embed = discord.Embed(title="Cell Bot", description="Cell Bot for Simple Commands. List of commands are:", color=0xeee657)
+
+			embed.add_field(name="!clockin", value="Clock yourself in. Displays Time and Date of clockin.", inline=False)
+			embed.add_field(name="!clockout", value="Clock yourself out. Displays Time and Date of clockout aswell as how long you were clockedin for", inline=False)
+			
+                bot.sendMessage({
+                    to: channelID,
+                    message: embed
+                });
+				
+            break;
+			
+			// !clockin
             case 'clockin':
                 bot.sendMessage({
                     to: channelID,
@@ -114,24 +131,26 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 					valueThor += value;
 					bot.sendMessage({
 						to: channelID,
-						message: user + " has added \n" + value + " Value \n" + user + " total value is now: " + valueThor
+						message: user + " has added " + value + " Value \n" + user + " __**Total Value:**__ " + valueThor
 					});
-					console.log(valueThor);
 				} else if (user == "weinerdog102") {
-					valueWeiner = valueWeiner + value;
-					currentvalue = valueWeiner;
-					console.log(currentvalue);
-					console.log(valueWeiner);
+					valueWeiner += value;
+					bot.sendMessage({
+						to: channelID,
+						message: user + " has added " + value + " Value \n" + user + " __**Total Value:**__ " + valueWeiner
+					});
 				} else if (user == "Vaporizr243") {
-					valueVapor = valueVapor + value;
-					currentvalue = valueVapor;
-					console.log(currentvalue);
-					console.log(valueVapor);
+					valueVapor += value;
+					bot.sendMessage({
+						to: channelID,
+						message: user + " has added " + value + " Value \n" + user + " __**Total Value:**__ " + valueVapor
+					});
 				} else if (user == "MySiameseTwin") {
-					valueSiamese = valueSiamese + value;
-					currentvalue = valueSiamese;
-					console.log(currentvalue);
-					console.log(valueSiamese);
+					valueSiamese += value;
+					bot.sendMessage({
+						to: channelID,
+						message: user + " has added " + value + " Value \n" + user + " __**Total Value:**__ " + valueSiamese
+					});
 				}
 				
 			break;
