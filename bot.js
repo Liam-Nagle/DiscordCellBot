@@ -27,6 +27,11 @@ let currentvalue;
 var data = fs.readFileSync('users.json')
 var users = JSON.parse(data);
 
+
+const embed = new Discord.Embed()
+
+
+
 function updateTime(){
 	
 	objToday = new Date(),
@@ -85,12 +90,60 @@ bot.on('message', function (user, userID, channelID, message, evt) {
         switch (command[0]) { // Execute code depending on first word
             // !help
 			case 'help':
+			
+			var embeded = {
+			  "content": "this `supports` __a__ **subset** *of* ~~markdown~~ 😃 ```js\nfunction foo(bar) {\n  console.log(bar);\n}\n\nfoo(1);```",
+			  "embed": {
+				"title": "title ~~(did you know you can have markdown here too?)~~",
+				"description": "this supports [named links](https://discordapp.com) on top of the previously shown subset of markdown. ```\nyes, even code blocks```",
+				"url": "https://discordapp.com",
+				"color": 14516329,
+				"timestamp": "2019-08-03T23:47:20.750Z",
+				"footer": {
+				  "icon_url": "https://cdn.discordapp.com/embed/avatars/0.png",
+				  "text": "footer text"
+				},
+				"thumbnail": {
+				  "url": "https://cdn.discordapp.com/embed/avatars/0.png"
+				},
+				"image": {
+				  "url": "https://cdn.discordapp.com/embed/avatars/0.png"
+				},
+				"author": {
+				  "name": "author name",
+				  "url": "https://discordapp.com",
+				  "icon_url": "https://cdn.discordapp.com/embed/avatars/0.png"
+				},
+				"fields": [
+				  {
+					"name": "🤔",
+					"value": "some of these properties have certain limits..."
+				  },
+				  {
+					"name": "😱",
+					"value": "try exceeding some of them!"
+				  },
+				  {
+					"name": "🙄",
+					"value": "an informative error should show up, and this view will remain as-is until all issues are fixed"
+				  },
+				  {
+					"name": "<:thonkang:219069250692841473>",
+					"value": "these last two",
+					"inline": true
+				  },
+				  {
+					"name": "<:thonkang:219069250692841473>",
+					"value": "are inline fields",
+					"inline": true
+				  }
+				]
+			  }
+			}
+			
                bot.sendMessage({
                    to: channelID,
-                   message: embed { 
-						color: 3447003,
-						description: "A simple Embed!"
-				   }
+                   message: embeded
 			   });
             break;
 			
