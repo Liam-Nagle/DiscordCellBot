@@ -5,10 +5,10 @@
   "main": "bot.js",
   "author": "Liam Nagle",
   "scripts": {
-	"start": "node bot.js"
-},
+    "start": "node bot.js"
+  },
   "dependencies": {
-    "discord.js": "11.1.0",
-    "request": "2.81.0"
+    "discord.io": "https://github.com/woor/discord.io/tarball/gateway_v6",
+    "winston": "^3.2.1"
   }
 }
