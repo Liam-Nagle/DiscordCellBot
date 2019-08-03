@@ -1,0 +1,93 @@
+var Discord = require('discord.io');
+var logger = require('winston');
+var auth = require('./auth.json');
+let clockedInTimeH;
+let clockedInTimeM;
+let clockedInTimeS;
+let clockedOutTimeH;
+let clockedOutTimeM;
+let clockedOutTimeS;
+let ClockedInTotal;
+let objToday;
+let today;
+let time;
+let timeH;
+let timeM;
+let timeS;
+function updateTime(){
+	
+	objToday = new Date(),
+		weekday = new Array('Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'),
+		dayOfWeek = weekday[objToday.getDay()],
+		domEnder = function() { var a = objToday; if (/1/.test(parseInt((a + "").charAt(0)))) return "th"; a = parseInt((a + "").charAt(1)); return 1 == a ? "st" : 2 == a ? "nd" : 3 == a ? "rd" : "th" }(),
+		dayOfMonth = today + ( objToday.getDate() < 10) ? '0' + objToday.getDate() + domEnder : objToday.getDate() + domEnder,
+		months = new Array('January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'),
+		curMonth = months[objToday.getMonth()],
+		curYear = objToday.getFullYear(),
+		curHour = objToday.getHours() > 12 ? objToday.getHours() - 12 : (objToday.getHours() < 10 ? "0" + objToday.getHours() : objToday.getHours()),
+		curMinute = objToday.getMinutes() < 10 ? "0" + objToday.getMinutes() : objToday.getMinutes(),
+		curSeconds = objToday.getSeconds() < 10 ? "0" + objToday.getSeconds() : objToday.getSeconds(),
+		curMeridiem = objToday.getHours() > 12 ? "PM" : "AM";
+	today = curHour + ":" + curMinute + "." + curSeconds + curMeridiem + " " + dayOfWeek + " " + dayOfMonth + " of " + curMonth + ", " + curYear + "\n__**LOCAL TIME**__";
+	timeH = curHour;
+	timeM = curMinute;
+	timeS = curSeconds;
+}
+setInterval(updateTime, 1000);
+
+// Configure logger settings
+logger.remove(logger.transports.Console);
+logger.add(new logger.transports.Console, {
+    colorize: true
+});
+logger.level = 'debug';
+// Initialize Discord Bot
+var bot = new Discord.Client({
+   token: auth.token,
+   autorun: true
+});
+bot.on('ready', function (evt) {
+    logger.info('Connected');
+    logger.info('Logged in as: ');
+    logger.info(bot.username + ' - (' + bot.id + ')');
+});
+bot.on('message', function (user, userID, channelID, message, evt) {
+    // Our bot needs to know if it will execute a command
+    // It will listen for messages that will start with `!`
+    if (message.substring(0, 1) == '!') {
+        var args = message.substring(1).split(' ');
+        var cmd = args[0];
+       
+        args = args.splice(1);
+        switch(cmd) {
+            // !clockin
+            case 'clockin':
+                bot.sendMessage({
+                    to: channelID,
+                    message: user + " has clocked in at \n" + today
+                });
+				
+				clockedInTimeH = timeH;
+				clockedInTimeM = timeM;
+				clockedInTimeS = timeS;
+            break;
+			// !clockout
+			case 'clockout':
+				clockedOutTimeH = timeH;
+				clockedOutTimeM = timeM;
+				clockedOutTimeS = timeS;
+				
+				// curMinute = objToday.getMinutes() < 10 ? "0" + objToday.getMinutes() : objToday.getMinutes(),
+				
+				clockedInTotal = ((clockedOutTimeH - clockedInTimeH) < 10 ? "0" + (clockedOutTimeH - clockedInTimeH) : (clockedOutTimeH - clockedInTimeH)) + ":" + ((clockedOutTimeM - clockedInTimeM) < 10 ? "0" + (clockedOutTimeM - clockedInTimeM) : (clockedOutTimeM - clockedInTimeM)) + ":" + ((clockedOutTimeS - clockedInTimeS) < 10 ? "0" + (clockedOutTimeS - clockedInTimeS) : (clockedOutTimeS - clockedInTimeS));
+				bot.sendMessage({
+					to: channelID,
+					message: user + " has clocked out at \n" + today + "\nClocked in for " + clockedInTotal
+				});
+				
+			break;
+			
+            // Just add any case commands if you want to..
+         }
+     }
+});
