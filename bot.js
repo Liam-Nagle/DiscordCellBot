@@ -91,3 +91,5 @@ bot.on('message', function (user, userID, channelID, message, evt) {
          }
      }
 });
+
+client.login(process.env.NjA2OTk5MjkwODI0NjIyMDgw.XUTjUw.t88TJHE_6-E3Vq5l0qYfnphmRDM)
