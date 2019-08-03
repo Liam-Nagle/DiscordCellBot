@@ -1,6 +1,9 @@
 var Discord = require('discord.io');
 var logger = require('winston');
 var auth = require('./auth.json');
+
+const prefix = "!" //set bot prefix
+
 let clockedInTimeH;
 let clockedInTimeM;
 let clockedInTimeS;
@@ -14,6 +17,8 @@ let time;
 let timeH;
 let timeM;
 let timeS;
+let value;
+
 function updateTime(){
 	
 	objToday = new Date(),
@@ -53,15 +58,18 @@ bot.on('ready', function (evt) {
 });
 
 
+//value = parseInt(command[1]);
+//				bot.sendMessage({
+//					to: channelID,
+//					message: user + " has added \n" + value + "\n" + user + " total value is now: "
+//				});
+
 bot.on('message', function (user, userID, channelID, message, evt) {
     // Our bot needs to know if it will execute a command
     // It will listen for messages that will start with `!`
-    if (message.substring(0, 1) == '!') {
-        var args = message.substring(1).split(' ');
-        var cmd = args[0];
-       
-        args = args.splice(1);
-        switch(cmd) {
+    if (message.startsWith(prefix)) { // Message starts with prefix
+        let command = message.slice(prefix.length).split(" "); // Split message into words
+        switch (command[0]) { // Execute code depending on first word
             // !clockin
             case 'clockin':
                 bot.sendMessage({
@@ -79,15 +87,23 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 				clockedOutTimeM = timeM;
 				clockedOutTimeS = timeS;
 				
-				// curMinute = objToday.getMinutes() < 10 ? "0" + objToday.getMinutes() : objToday.getMinutes(),
+				clockedInTotal = ((clockedOutTimeH - clockedInTimeH) < 10 ? "0" + (clockedOutTimeH - clockedInTimeH) : (clockedOutTimeH - clockedInTimeH)) + ":" + ((clockedOutTimeM - clockedInTimeM) < 10 ? "0" + (clockedOutTimeM - clockedInTimeM) : (clockedOutTimeM - clockedInTimeM)) + ":" + ((clockedOutTimeS - clockedInTimeS) < 10 ? "0" + (clockedOutTimeS - clockedInTimeS) : (clockedOutTimeS - clockedInTimeS));
+				bot.sendMessage({
+					to: channelID,
+					message: user + "TEST has clocked out at \n" + today + "\nClocked in for: " + clockedInTotal
+				});
+			break;
+			// !clockout
+			case 'test2':
+				clockedOutTimeH = timeH;
+				clockedOutTimeM = timeM;
+				clockedOutTimeS = timeS;
 				
 				clockedInTotal = ((clockedOutTimeH - clockedInTimeH) < 10 ? "0" + (clockedOutTimeH - clockedInTimeH) : (clockedOutTimeH - clockedInTimeH)) + ":" + ((clockedOutTimeM - clockedInTimeM) < 10 ? "0" + (clockedOutTimeM - clockedInTimeM) : (clockedOutTimeM - clockedInTimeM)) + ":" + ((clockedOutTimeS - clockedInTimeS) < 10 ? "0" + (clockedOutTimeS - clockedInTimeS) : (clockedOutTimeS - clockedInTimeS));
 				bot.sendMessage({
 					to: channelID,
-					message: user + " has clocked out at \n" + today + "\nClocked in for " + clockedInTotal
+					message: user + " has clocked out at \n" + today + "\nClocked in for: " + clockedInTotal
 				});
-				
-			break;
 			
             // Just add any case commands if you want to..
          }
