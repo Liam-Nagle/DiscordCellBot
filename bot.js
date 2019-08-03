@@ -95,7 +95,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 				bot.send
                 bot.sendMessage({
                     to: channelID,
-                    message: "TEST";
+                    message: reply + "Test"
                 });
 				
             break;
