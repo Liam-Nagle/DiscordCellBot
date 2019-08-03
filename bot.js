@@ -1,6 +1,5 @@
-var Discord = require('discord.io');
-var logger = require('winston');
-var auth = require('./auth.json');
+var Discord = require('discord.js');
+var bot = new Discord.Client();
 let clockedInTimeH;
 let clockedInTimeM;
 let clockedInTimeS;
@@ -35,17 +34,6 @@ function updateTime(){
 }
 setInterval(updateTime, 1000);
 
-// Configure logger settings
-logger.remove(logger.transports.Console);
-logger.add(new logger.transports.Console, {
-    colorize: true
-});
-logger.level = 'debug';
-// Initialize Discord Bot
-var bot = new Discord.Client({
-   token: auth.token,
-   autorun: true
-});
 bot.on('ready', function (evt) {
     logger.info('Connected');
     logger.info('Logged in as: ');
