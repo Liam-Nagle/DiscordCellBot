@@ -2,7 +2,10 @@ var Discord = require('discord.io');
 var logger = require('winston');
 var auth = require('./auth.json');
 var fs = require('fs');
-
+var valueThor = 0;
+var valueWeiner = 0;
+var valueVapor = 0;
+var valueSiamese = 0;
 
 const prefix = "!" //set bot prefix
 
@@ -19,11 +22,7 @@ let time;
 let timeH;
 let timeM;
 let timeS;
-let value
-let valueThor;
-let valueWeiner;
-let valueVapor;
-let valueSiamese;
+let value;
 let currentvalue;
 var data = fs.readFileSync('users.json')
 var users = JSON.parse(data);
@@ -112,7 +111,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 				//WOULD BE NICE THIS WAY BUT JUST CHECK IF USER = NAME AND THEN MAKE SURE ITS ONLY THE 4 PEOPLE THAT ARE IN THE CELL. SIAMESE ME WEINER ND VAPOR.
 				
 				if(user == "Thorgrim102") {
-					valueThor += value;
+					valueThor = value;
 					bot.sendMessage({
 						to: channelID,
 						message: user + " has added \n" + value + " Value \n" + user + " total value is now: " + valueThor
