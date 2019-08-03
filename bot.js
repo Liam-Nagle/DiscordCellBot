@@ -111,24 +111,24 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 				
 				//WOULD BE NICE THIS WAY BUT JUST CHECK IF USER = NAME AND THEN MAKE SURE ITS ONLY THE 4 PEOPLE THAT ARE IN THE CELL. SIAMESE ME WEINER ND VAPOR.
 				
-				if(user == "Thorgrim102") {
+				if(user == Thorgrim102) {
 					valueThor = valueThor + value;
-					currentvalue += valueThor;
+					currentvalue = valueThor;
 					console.log(currentvalue);
 					console.log(valueThor);
 				} else if (user == "weinerdog102") {
 					valueWeiner = valueWeiner + value;
-					currentvalue += valueWeiner;
+					currentvalue = valueWeiner;
 					console.log(currentvalue);
 					console.log(valueWeiner);
 				} else if (user == "Vaporizr243") {
 					valueVapor = valueVapor + value;
-					currentvalue += valueVapor;
+					currentvalue = valueVapor;
 					console.log(currentvalue);
 					console.log(valueVapor);
 				} else if (user == "MySiameseTwin") {
 					valueSiamese = valueSiamese + value;
-					currentvalue += valueSiamese;
+					currentvalue = valueSiamese;
 					console.log(currentvalue);
 					console.log(valueSiamese);
 				}
