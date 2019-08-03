@@ -87,7 +87,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 			case 'help':
                bot.sendMessage({
                    to: channelID,
-                   message: embed: { 
+                   message: embed { 
 						color: 3447003,
 						description: "A simple Embed!"
 				   }
