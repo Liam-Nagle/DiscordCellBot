@@ -55,7 +55,7 @@ function addUser(username, value) {
 }
 
 function addValue(username, value) {
-	var data = 
+	
 }
 
 
