@@ -107,11 +107,12 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 			// !addvalue
 			case 'addvalue':
 				value = parseInt(command[1]);
+				console.log(user);
 				//addUser(user, value);
 				
 				//WOULD BE NICE THIS WAY BUT JUST CHECK IF USER = NAME AND THEN MAKE SURE ITS ONLY THE 4 PEOPLE THAT ARE IN THE CELL. SIAMESE ME WEINER ND VAPOR.
 				
-				if(user == Thorgrim102) {
+				if(user == "Thorgrim102") {
 					valueThor = valueThor + value;
 					bot.sendMessage({
 						to: channelID,
