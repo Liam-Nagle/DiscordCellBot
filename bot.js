@@ -24,6 +24,7 @@ let valueThor;
 let valueWeiner;
 let valueVapor;
 let valueSiamese;
+let currentvalue;
 var data = fs.readFileSync('users.json')
 var users = JSON.parse(data);
 
@@ -112,30 +113,23 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 				
 				if(user == "Thorgrim102") {
 					valueThor = valueThor + value;
-					bot.sendMessage({
-						to: channelID,
-						message: user + " has added \n" + value + " Value \n" + user + " total value is now: " + valueThor
-					});
+					currentvalue = valueThor;
 				} else if (user == "weinerdog102") {
 					valueWeiner = valueWeiner + value;
-					bot.sendMessage({
-						to: channelID,
-						message: user + " has added \n" + value + " Value \n" + user + " total value is now: " + valueWeiner
-					});
+					currentvalue = valueWeiner;
 				} else if (user == "Vaporizr243") {
 					valueVapor = valueVapor + value;
-					bot.sendMessage({
-						to: channelID,
-						message: user + " has added \n" + value + " Value \n" + user + " total value is now: " + valueVapor
-					});
+					currentvalue = valueVapor;
 				} else if (user == "MySiameseTwin") {
 					valueSiamese = valueSiamese + value;
-					bot.sendMessage({
-						to: channelID,
-						message: user + " has added \n" + value + " Value \n" + user + " total value is now: " + valueSiamese
-					});
+					currentvalue = valueSiamese;
 				}
 				
+				
+				bot.sendMessage({
+					to: channelID,
+					message: user + " has added \n" + value + " Value \n" + user + " total value is now: " + currentvalue
+				});
 			break;
             // Just add any case commands if you want to..
          }
