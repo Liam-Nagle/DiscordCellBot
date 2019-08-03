@@ -27,11 +27,6 @@ let currentvalue;
 var data = fs.readFileSync('users.json')
 var users = JSON.parse(data);
 
-
-const embed = new Discord.Embed()
-
-
-
 function updateTime(){
 	
 	objToday = new Date(),
