@@ -84,22 +84,22 @@ bot.on('message', function (user, userID, channelID, message, evt) {
         let command = message.slice(prefix.length).split(" "); // Split message into words
         switch (command[0]) { // Execute code depending on first word
             // !help
-            case 'help':
-			embed = discord.Embed(title="Cell Bot", description="Cell Bot for Simple Commands. List of commands are:", color=0xeee657)
-
-			embed.add_field(name="!clockin", value="Clock yourself in. Displays Time and Date of clockin.", inline=False)
-			embed.add_field(name="!clockout", value="Clock yourself out. Displays Time and Date of clockout aswell as how long you were clockedin for", inline=False)
-			
-			reply = embed;
-			
-				bot.send
-                bot.sendMessage({
-                    to: channelID,
-                    message: reply + "Test"
-                });
-				
-            break;
-			
+ //           case 'help':
+//			embed = discord.Embed(title="Cell Bot", description="Cell Bot for Simple Commands. List of commands are:", color=0xeee657)
+//
+//			embed.add_field(name="!clockin", value="Clock yourself in. Displays Time and Date of clockin.", inline=False)
+//			embed.add_field(name="!clockout", value="Clock yourself out. Displays Time and Date of clockout aswell as how long you were clockedin for", inline=False)
+//			
+//			reply = embed;
+//			
+//				bot.send
+//               bot.sendMessage({
+//                    to: channelID,
+//                    message: reply + "Test"
+//                });
+//				
+//            break;
+//			
 			// !clockin
             case 'clockin':
                 bot.sendMessage({
