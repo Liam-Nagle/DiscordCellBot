@@ -160,11 +160,13 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 				if(user == "Thorgrim102") {
 					valueThor += value;
 					users2[user] = valueThor;
+					var uservalue = users2.values(2);
 					
+					console.log(uservalue);
 					console.log(users2);
 					bot.sendMessage({
 						to: channelID,
-						message: user + " has added " + value + " Value \n" + user + " __**Total Value:**__ " + valueThor
+						message: user + " has added " + value + " Value \n" + user + " __**Total Value:**__ " + uservalue
 					});
 				} else if (user == "weinerdog102") {
 					valueWeiner += value;
