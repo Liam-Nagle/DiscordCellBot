@@ -159,6 +159,9 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 				
 				if(user == "Thorgrim102") {
 					valueThor += value;
+					users2[user] = valueThor;
+					
+					console.log(users2);
 					bot.sendMessage({
 						to: channelID,
 						message: user + " has added " + value + " Value \n" + user + " __**Total Value:**__ " + valueThor
@@ -190,14 +193,16 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 				
                 bot.sendMessage({
                     to: channelID,
-                    message: user + " has clocked in at \n" + today
+                    message: user + " is going for a " + breaktime + "break"
                 });
             break;		
 			//!adduser
 			case 'adduser':
 				user = command[1];
+				users2.adduser(user);
 				
-				adduser(user);
+				console.log(user);
+				console.log(users2);
 				
                 bot.sendMessage({
                     to: channelID,
