@@ -26,12 +26,12 @@ let value;
 let currentvalue;
 var data = fs.readFileSync('users.json')
 var users = JSON.parse(data);
-var users2 = {
+var users2 = [
 	"Thorgrim102": 0,
 	"weinerdog102": 0,
 	"Vaporizr243": 0,
 	"MySiameseTwin": 0
-}
+]
 
 function updateTime(){
 	
@@ -159,10 +159,14 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 				
 				if(user == "Thorgrim102") {
 					valueThor += value;
-					users2[user] = valueThor;
-					var uservalue = users2.values(2);
+					users[user] = valueThor;
+					var data = JSON.stringify(users, null, 2);
+					fs.writeFile('users.json', data, finished);
 					
-					console.log(uservalue);
+					function finsihed(err) {
+						console.log('It Worked');
+					}
+					
 					console.log(users2);
 					bot.sendMessage({
 						to: channelID,
