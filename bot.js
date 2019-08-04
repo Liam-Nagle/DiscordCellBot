@@ -56,8 +56,8 @@ function addUser(username) {
 	users2[user] = value;
 }
 
-function addValue(username, value) {
-	
+function finsihed(err) {
+	console.log('It Worked');
 }
 
 
@@ -156,10 +156,6 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 					users[user] = valueThor;
 					var data = JSON.stringify(users, null, 2);
 					fs.writeFile('users.json', data, finished);
-					
-					function finsihed(err) {
-						console.log('It Worked');
-					}
 					
 					console.log(users2);
 					bot.sendMessage({
