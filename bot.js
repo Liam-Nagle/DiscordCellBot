@@ -27,6 +27,7 @@ let currentvalue;
 var data = fs.readFileSync('users.json')
 var users = JSON.parse(data);
 
+
 function updateTime(){
 	
 	objToday = new Date(),
@@ -59,6 +60,55 @@ function addValue(username, value) {
 }
 
 
+const exampleEmbed = {
+	color: 0x0099ff,
+	title: 'Some title',
+	url: 'https://discord.js.org',
+	author: {
+		name: 'Some name',
+		icon_url: 'https://i.imgur.com/wSTFkRM.png',
+		url: 'https://discord.js.org',
+	},
+	description: 'Some description here',
+	thumbnail: {
+		url: 'https://i.imgur.com/wSTFkRM.png',
+	},
+	fields: [
+		{
+			name: 'Regular field title',
+			value: 'Some value here',
+		},
+		{
+			name: '\u200b',
+			value: '\u200b',
+		},
+		{
+			name: 'Inline field title',
+			value: 'Some value here',
+			inline: true,
+		},
+		{
+			name: 'Inline field title',
+			value: 'Some value here',
+			inline: true,
+		},
+		{
+			name: 'Inline field title',
+			value: 'Some value here',
+			inline: true,
+		},
+	],
+	image: {
+		url: 'https://i.imgur.com/wSTFkRM.png',
+	},
+	timestamp: new Date(),
+	footer: {
+		text: 'Some footer text here',
+		icon_url: 'https://i.imgur.com/wSTFkRM.png',
+	},
+};
+
+
 
 // Configure logger settings
 logger.remove(logger.transports.Console);
@@ -86,60 +136,10 @@ bot.on('message', function (user, userID, channelID, message, evt) {
             // !help
 			case 'help':
 			
-			var embeded = {
-			  "content": "this `supports` __a__ **subset** *of* ~~markdown~~ 😃 ```js\nfunction foo(bar) {\n  console.log(bar);\n}\n\nfoo(1);```",
-			  "embed": {
-				"title": "title ~~(did you know you can have markdown here too?)~~",
-				"description": "this supports [named links](https://discordapp.com) on top of the previously shown subset of markdown. ```\nyes, even code blocks```",
-				"url": "https://discordapp.com",
-				"color": 1444321,
-				"timestamp": "2019-08-04T00:00:10.356Z",
-				"footer": {
-				  "icon_url": "https://cdn.discordapp.com/embed/avatars/0.png",
-				  "text": "footer text"
-				},
-				"thumbnail": {
-				  "url": "https://cdn.discordapp.com/embed/avatars/0.png"
-				},
-				"image": {
-				  "url": "https://cdn.discordapp.com/embed/avatars/0.png"
-				},
-				"author": {
-				  "name": "author name",
-				  "url": "https://discordapp.com",
-				  "icon_url": "https://cdn.discordapp.com/embed/avatars/0.png"
-				},
-				"fields": [
-				  {
-					"name": "🤔",
-					"value": "some of these properties have certain limits..."
-				  },
-				  {
-					"name": "😱",
-					"value": "try exceeding some of them!"
-				  },
-				  {
-					"name": "🙄",
-					"value": "an informative error should show up, and this view will remain as-is until all issues are fixed"
-				  },
-				  {
-					"name": "<:thonkang:219069250692841473>",
-					"value": "these last two",
-					"inline": true
-				  },
-				  {
-					"name": "<:thonkang:219069250692841473>",
-					"value": "are inline fields",
-					"inline": true
-				  }
-				]
-			  }
-			}
-			
                bot.sendMessage({
                    to: channelID,
-                   message: "Helpful Commands",
-				   [embed]: embeded
+                   message: "Test",
+				   embed: exampleEmbed
 			   });
             break;
 			
