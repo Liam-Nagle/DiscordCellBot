@@ -26,7 +26,12 @@ let value;
 let currentvalue;
 var data = fs.readFileSync('users.json')
 var users = JSON.parse(data);
-
+var users2 {
+	"Thorgrim102": 0,
+	"weinerdog102": 0,
+	"Vaporizr243": 0,
+	"MySiameseTwin": 0
+}
 
 function updateTime(){
 	
@@ -51,8 +56,10 @@ setInterval(updateTime, 1000);
 
 
 
-function addUser(username, value) {
-	
+function addUser(username) {
+	var user = username;
+	var value = 0;
+	users2[user] = value;
 }
 
 function addValue(username, value) {
@@ -65,7 +72,7 @@ const exampleEmbed = {
 	title: 'Cell Bot',
 	author: {
 		name: 'Thorgrim102',
-		icon_url: 'https://www.facebook.com/photo.php?fbid=1362990170382088&set=a.165632133451237&type=3&theater',
+		icon_url: 'https://imgur.com/a/I4zYxIa',
 	},
 	description: 'Cell Bot designed for the Solution Cell',
 	fields: [
@@ -79,7 +86,7 @@ const exampleEmbed = {
 		},
 		{
 			name: '!addvalue [n]',
-			value: 'Adds and counts value added by yourself. Will display amount added and total amount added.',
+			value: 'Adds and counts value added by yourself. Will display amount added and total amount added. [n] = Amount of value added.',
 		},
 	],
 	timestamp: new Date(),
@@ -87,8 +94,6 @@ const exampleEmbed = {
 		text: 'Created and Coded by Thorgrim102 (Liam Nagle)',
 	},
 };
-
-
 
 // Configure logger settings
 logger.remove(logger.transports.Console);
@@ -177,8 +182,28 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 						message: user + " has added " + value + " Value \n" + user + " __**Total Value:**__ " + valueSiamese
 					});
 				}
-				
 			break;
+			//!break
+			case 'break':
+				breaktime = parseInt(command[1]);
+				
+				
+                bot.sendMessage({
+                    to: channelID,
+                    message: user + " has clocked in at \n" + today
+                });
+            break;		
+			//!adduser
+			case 'adduser':
+				user = command[1];
+				
+				adduser(user);
+				
+                bot.sendMessage({
+                    to: channelID,
+                    message: users2
+                });
+            break;
             // Just add any case commands if you want to..
          }
      }
