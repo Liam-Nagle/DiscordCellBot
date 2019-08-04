@@ -26,12 +26,6 @@ let value;
 let currentvalue;
 var data = fs.readFileSync('users.json')
 var users = JSON.parse(data);
-var users2 = [
-	"Thorgrim102": 0,
-	"weinerdog102": 0,
-	"Vaporizr243": 0,
-	"MySiameseTwin": 0
-]
 
 function updateTime(){
 	
