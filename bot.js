@@ -64,8 +64,8 @@ const exampleEmbed = {
 	color: 0x0099ff,
 	title: 'Cell Bot',
 	author: {
-		name: client.user.username,
-		icon_url: client.user.avatarURL
+		name: 'Thorgrim102',
+		icon_url: 'https://www.facebook.com/photo.php?fbid=1362990170382088&set=a.165632133451237&type=3&theater',
 	},
 	description: 'Cell Bot designed for the Solution Cell',
 	fields: [
