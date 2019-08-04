@@ -62,49 +62,29 @@ function addValue(username, value) {
 
 const exampleEmbed = {
 	color: 0x0099ff,
-	title: 'Some title',
-	url: 'https://discord.js.org',
+	title: 'Cell Bot',
 	author: {
-		name: 'Some name',
-		icon_url: 'https://i.imgur.com/wSTFkRM.png',
-		url: 'https://discord.js.org',
+		name: client.user.username,
+		icon_url: client.user.avatarURL
 	},
-	description: 'Some description here',
-	thumbnail: {
-		url: 'https://i.imgur.com/wSTFkRM.png',
-	},
+	description: 'Cell Bot designed for the Solution Cell',
 	fields: [
 		{
-			name: 'Regular field title',
-			value: 'Some value here',
+			name: '!clockin',
+			value: 'Clock yourself in. Displays clock in time and date.',
 		},
 		{
-			name: '\u200b',
-			value: '\u200b',
+			name: '!clockout',
+			value: 'Clock yourself out. Displays clock out time and date. Aswell as total time clocked in.',
 		},
 		{
-			name: 'Inline field title',
-			value: 'Some value here',
-			inline: true,
-		},
-		{
-			name: 'Inline field title',
-			value: 'Some value here',
-			inline: true,
-		},
-		{
-			name: 'Inline field title',
-			value: 'Some value here',
-			inline: true,
+			name: '!addvalue [n]',
+			value: 'Adds and counts value added by yourself. Will display amount added and total amount added.',
 		},
 	],
-	image: {
-		url: 'https://i.imgur.com/wSTFkRM.png',
-	},
 	timestamp: new Date(),
 	footer: {
-		text: 'Some footer text here',
-		icon_url: 'https://i.imgur.com/wSTFkRM.png',
+		text: 'Created and Coded by Thorgrim102 (Liam Nagle)',
 	},
 };
 
@@ -138,7 +118,6 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 			
                bot.sendMessage({
                    to: channelID,
-                   message: "Test",
 				   embed: exampleEmbed
 			   });
             break;
