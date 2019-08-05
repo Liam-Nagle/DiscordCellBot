@@ -48,8 +48,6 @@ function updateTime(){
 }
 setInterval(updateTime, 1000);
 
-
-
 function addUser(username) {
 	var user = username;
 	var value = 0;
