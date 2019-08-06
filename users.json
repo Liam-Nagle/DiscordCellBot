@@ -1,12 +1,42 @@
 [
   {
     "Name": "Thorgrim102",
-    "Value": 0,
-    "ClockInHour": 5,
-    "ClockInMin": 52,
-    "ClockInSec": 58,
+    "Value": 70328000,
+    "ClockInHour": 22,
+    "ClockInMin": 8,
+    "ClockInSec": 43,
     "ClockedIn": "Yes",
     "BreakTime": 70,
+    "Break": "No"
+  },
+  {
+    "Name": "mason",
+    "Value": 68000000,
+    "ClockInHour": 9,
+    "ClockInMin": 17,
+    "ClockInSec": 20,
+    "ClockedIn": "No",
+    "BreakTime": 0,
+    "Break": "No"
+  },
+  {
+    "Name": "Vaporizr243",
+    "Value": 69120000,
+    "ClockInHour": 15,
+    "ClockInMin": 36,
+    "ClockInSec": 30,
+    "ClockedIn": "Yes",
+    "BreakTime": 0,
+    "Break": "No"
+  },
+  {
+    "Name": "SilverLight",
+    "Value": 26880000,
+    "ClockInHour": 19,
+    "ClockInMin": 40,
+    "ClockInSec": 50,
+    "ClockedIn": "No",
+    "BreakTime": 0,
     "Break": "No"
   }
 ]
